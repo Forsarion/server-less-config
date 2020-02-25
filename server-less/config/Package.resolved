@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AWSLambdaSwift",
+        "repositoryURL": "https://github.com/tonisuter/aws-lambda-swift.git",
+        "state": {
+          "branch": null,
+          "revision": "00726748c8de14d4ca0bff540d9dc8d5bc7a900f",
+          "version": "0.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
