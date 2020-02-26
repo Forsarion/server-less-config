@@ -5,11 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "config",
-    products: [
-        .library(
-            name: "config",
-            targets: ["config"]),
-    ],
     dependencies: [
         .package(url: "https://github.com/tonisuter/aws-lambda-swift.git",
                  from: "0.2.0"),

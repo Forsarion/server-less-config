@@ -3,6 +3,8 @@ SWIFT_DOCKER_IMAGE=swift:5.1
 LAMBDA_ZIP=lambda.zip
 LAMBDA_NAME=Config
 EXECUTABLE=config
+SHARED_LIBS_FOLDER=swift-shared-libs
+LAYER_ZIP=swift-lambda-runtime.zip
 
 clean_lambda:
 	rm $(LAMBDA_ZIP) || true
@@ -12,7 +14,7 @@ build_lambda:
 	docker run \
 			--rm \
 			--volume "$(shell pwd)/:/src" \
-			--workdir "/src/$(PROJECT_PATH)" \
+			--workdir "/src" \
 			$(SWIFT_DOCKER_IMAGE) \
 			swift build
 
@@ -21,9 +23,6 @@ package_lambda: clean_lambda build_lambda
 
 deploy_lambda: package_lambda
 	aws lambda update-function-code --function-name $(LAMBDA_NAME) --zip-file fileb://${LAMBDA_ZIP}
-
-SHARED_LIBS_FOLDER=swift-shared-libs
-LAYER_ZIP=swift-lambda-runtime.zip
 
 clean_layer:
 	rm $(LAYER_ZIP) || true
