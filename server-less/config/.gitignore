@@ -2,3 +2,4 @@ swift-shared-libs
 *.zip
 .build
 config.xcodeproj
+.swiftpm

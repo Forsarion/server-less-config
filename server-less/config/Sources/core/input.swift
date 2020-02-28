@@ -1,3 +1,3 @@
-struct Input: Codable {
+public struct Input: Codable {
     let environment: Environment
 }

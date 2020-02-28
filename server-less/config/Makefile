@@ -2,7 +2,7 @@
 SWIFT_DOCKER_IMAGE=swift:5.1
 LAMBDA_ZIP=lambda.zip
 LAMBDA_NAME=Config
-EXECUTABLE=config
+EXECUTABLE=lambda
 SHARED_LIBS_FOLDER=swift-shared-libs
 LAYER_ZIP=swift-lambda-runtime.zip
 SHARED_LIBS_FOLDER=swift-shared-libs

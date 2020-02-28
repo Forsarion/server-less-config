@@ -4,17 +4,18 @@
 import PackageDescription
 
 let package = Package(
-    name: "config",
+    name: "Config",
+    products: [
+        .executable(name: "lambda", targets: ["lambda"]),
+        .library(name: "core", targets: ["core"]),
+    ],
     dependencies: [
         .package(url: "https://github.com/tonisuter/aws-lambda-swift.git",
                  from: "0.2.0"),
     ],
     targets: [
-        .target(
-            name: "config",
-            dependencies: ["AWSLambdaSwift"]),
-        .testTarget(
-            name: "configTests",
-            dependencies: ["config", "AWSLambdaSwift"]),
+        .target(name: "lambda", dependencies: ["core"]),
+        .target(name: "core", dependencies: ["AWSLambdaSwift"]),
+        .testTarget(name: "coreTests", dependencies: ["core"]),
     ]
 )
