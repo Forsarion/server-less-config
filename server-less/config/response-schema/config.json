@@ -1,0 +1,12 @@
+{
+    "$schema": "./config-schema.json",
+    "environment": {
+        "value": "value"
+    },
+    "api": {
+        "value": "value"
+    },
+    "auth": {
+        "value": "value"
+    }
+}
