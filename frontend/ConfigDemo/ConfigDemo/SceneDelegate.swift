@@ -14,6 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    @State var props = Props.loading
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         do {
@@ -28,14 +30,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
                 guard let data = data else { return }
                 print(String(data: data, encoding: .utf8) ?? "no string")
-                let output = try? JSONDecoder().decode(Output.self, from: data)
-                print(output ?? "no output")
+                guard let output = try? JSONDecoder().decode(Output.self, from: data) else { return }
+                print(output)
+                self.props = Props.environment(.init(name: output.environment.value,
+                                                     apiUrl: output.api.value,
+                                                     authUrl: output.auth.value))
             }.resume()
         } catch let error {
             print(error)
         }
     
-        let contentView = ContentView()
+        let contentView = ContentView(props: $props)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
