@@ -9,12 +9,16 @@
 import SwiftUI
 
 struct EnvironmentView: View {
-    @State var environment: Environment
+    @Binding var environment: Environment
     var body: some View {
         VStack {
+            Divider()
             Text("Environment: \(environment.name)")
-            Text("API Url: \(environment.apiUrl))")
+            Divider()
+            Text("API Url: \(environment.apiUrl)")
+            Divider()
             Text("Auth Url: \(environment.authUrl)")
+            Divider()
         }
     }
 }
@@ -22,9 +26,9 @@ struct EnvironmentView: View {
 struct EnvironmentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EnvironmentView(environment: .init(name: "name",
+            EnvironmentView(environment: .constant(.init(name: "name",
                                                apiUrl: "apiUrl",
-                                               authUrl: "authUrl"))
+                                               authUrl: "authUrl")))
         }
     }
 }
