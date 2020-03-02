@@ -22,6 +22,11 @@ final class ConfigService: ObservableObject {
 
     private var cancellable: AnyCancellable?
 
+    convenience init(state: State) {
+        self.init()
+        self.state = state
+    }
+    
     init() {
         do {
             var request = URLRequest(url: URL(string: "https://84rkr0rn1j.execute-api.eu-central-1.amazonaws.com/production/config")!)
