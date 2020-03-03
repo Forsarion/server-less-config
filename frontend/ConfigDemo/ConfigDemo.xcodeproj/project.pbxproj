@@ -99,7 +99,8 @@
 				666DBF45240B7EB200884A37 /* Core.h */,
 				666DBF46240B7EB200884A37 /* Info.plist */,
 			);
-			path = Core;
+			name = Core;
+			path = "../../server-less/config/Sources/core";
 			sourceTree = "<group>";
 		};
 		668F59DD240ADDDE001863FB = {
@@ -310,7 +311,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = "../../server-less/config/Sources/core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -337,7 +338,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Core/Info.plist;
+				INFOPLIST_FILE = "../../server-less/config/Sources/core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
