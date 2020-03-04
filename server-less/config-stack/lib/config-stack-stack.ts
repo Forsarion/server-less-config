@@ -3,6 +3,7 @@ import * as cdk from '@aws-cdk/core'
 import * as lambda from '@aws-cdk/aws-lambda'
 import * as apigateway from '@aws-cdk/aws-apigateway'
 import { LayerVersion } from '@aws-cdk/aws-lambda';
+import { EmptyModel } from '@aws-cdk/aws-apigateway';
 
 export class ConfigStackStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -20,13 +21,25 @@ export class ConfigStackStack extends cdk.Stack {
       layers: [layer]
     })
 
-    const api = new apigateway.RestApi(this, "config-handler-api", {
-      restApiName: "Config Service",
-      description: "Config Service API Gateway"
+    const api = new apigateway.LambdaRestApi(this, 'config-handler-api', {
+      handler,
+      proxy: false,
     })
 
-    const postConfigIntegration = new apigateway.LambdaIntegration(handler)
+    const integration = new apigateway.LambdaIntegration(handler, {
+      proxy: false,
+      integrationResponses: [{ statusCode: "200" }]
+    })
 
-    api.root.addMethod('POST', postConfigIntegration)
+    const config = api.root.addResource('config', { defaultIntegration: integration })
+
+    config.addMethod('POST', integration, {
+      methodResponses: [{
+        statusCode: '200',
+        responseModels: {
+          'application/json': new EmptyModel()
+        }
+      }]
+    })
   }
 }
