@@ -102,6 +102,3 @@ package_layer: clean_layer
 					/usr/lib/x86_64-linux-gnu/libunistring.so.2 \
 					/usr/lib/x86_64-linux-gnu/libwind.so.0
 	zip -r $(LAYER_ZIP) bootstrap $(SHARED_LIBS_FOLDER)
-
-publish_layer:
-	unimplemented
