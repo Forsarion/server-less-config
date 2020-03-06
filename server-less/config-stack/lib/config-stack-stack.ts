@@ -12,13 +12,11 @@ export class ConfigStackStack extends cdk.Stack {
 
     const bucket = new s3.Bucket(this, 'swift-layers');
     new s3deploy.BucketDeployment(this, 'swift-layers-deployment', {
-      sources: [s3deploy.Source.asset('../config/swift-lambda-runtime.zip.zip')],
+      sources: [s3deploy.Source.asset('../config/upload')],
       destinationBucket: bucket,
-      destinationKeyPrefix: '/swift-lambda-runtime'
     })
     
-    // const layer = new LayerVersion(this, 'swift-51', { code: Code.fromBucket() })
-    const layer = LayerVersion.fromLayerVersionArn(this, 'Swift51', 'arn:aws:lambda:eu-central-1:721126196132:layer:Swift51:4')
+    const layer = new LayerVersion(this, 'swift-51', { code: Code.fromBucket(bucket, 'swift-lambda-runtime.zip') })
         
     const handler = new lambda.Function(this, 'ConfigHandler', {
       runtime: lambda.Runtime.PROVIDED,
