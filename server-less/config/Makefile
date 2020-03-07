@@ -23,11 +23,11 @@ build_lambda:
 package_lambda: clean_lambda build_lambda
 	zip -r -j $(LAMBDA_ZIP) .build/debug/$(EXECUTABLE)
 
-deploy_lambda: package_lambda
-	aws lambda update-function-code --function-name $(LAMBDA_NAME) --zip-file fileb://${LAMBDA_ZIP}
+deploy_lambda: package_layer package_lambda 
+	cd ../config-stack && cdk deploy
 
 clean_layer:
-	rm $(LAYER_ZIP) || true
+	rm upload/$(LAYER_ZIP) || true
 	rm -r $(SHARED_LIBS_FOLDER) || true
 
 package_layer: clean_layer
@@ -101,4 +101,6 @@ package_layer: clean_layer
 					/usr/lib/x86_64-linux-gnu/libtasn1.so.6 \
 					/usr/lib/x86_64-linux-gnu/libunistring.so.2 \
 					/usr/lib/x86_64-linux-gnu/libwind.so.0
-	zip -r $(LAYER_ZIP) bootstrap $(SHARED_LIBS_FOLDER)
+	mkdir upload || true
+	cd upload/
+	zip -r upload/$(LAYER_ZIP) bootstrap $(SHARED_LIBS_FOLDER)
