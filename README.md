@@ -1,5 +1,7 @@
-# Requirements
+# Setup Requirements
 - Amazon Web Services Account
+- node and npm
+- Docker
 - `brew install aws-cli`
 - `brew install aws-cdk`
 - Xcode 11 (only for iOS app)
