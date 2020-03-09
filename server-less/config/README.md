@@ -1,3 +1,7 @@
-# config
+# Config services
 
-A description of this package.
+Returns configuration data for other apps/services.
+
+# Tech Stack
+- Swift 5.1
+- Swift Package Manager

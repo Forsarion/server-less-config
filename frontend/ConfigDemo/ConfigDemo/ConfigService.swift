@@ -29,8 +29,8 @@ final class ConfigService: ObservableObject {
     
     init() {
         do {
-            var request = URLRequest(url: URL(string: "https://84rkr0rn1j.execute-api.eu-central-1.amazonaws.com/production/config")!)
-            let body = try JSONEncoder().encode(Input(environment: .init(value: "value")))
+            var request = URLRequest(url: URL(string: "https://0b5khold13.execute-api.eu-central-1.amazonaws.com/prod/config")!)
+            let body = try JSONEncoder().encode(Input(environment: .init(value: "prod")))
             request.httpBody = body
             request.httpMethod = "POST"
             

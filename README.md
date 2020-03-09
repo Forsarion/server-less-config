@@ -1,11 +1,13 @@
 # Setup Requirements
 - Amazon Web Services Account
-- node and npm
 - Docker
 - `brew install aws-cli`
-- `brew install aws-cdk`
 - Xcode 11 (only for iOS app)
 - VS Code and AWS Toolkit extension
+
+**Required for AWS CDK development:**
+- `brew install aws-cdk`
+- node and npm
 
 # Monorepo structure
 

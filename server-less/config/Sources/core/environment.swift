@@ -1,3 +1,4 @@
+/// Environment phantom type
 public struct Environment: Codable {
     public let value: String
     public init(value: String) {
